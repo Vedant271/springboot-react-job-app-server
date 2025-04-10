@@ -16,18 +16,30 @@ public class JobController {
     private JobService jobService;
 
     @GetMapping("jobPosts")
-    public List<JobPost> postJobs(){
-        return jobService.getAllJobs();
+    public List<JobPost> getJobPosts(){
+        return jobService.getAllJobPosts();
     }
 
-    @RequestMapping("jobPost/{postId}")
-    public JobPost getJob(@PathVariable("postId") int postId){
-        return jobService.getJob(postId);
+    @GetMapping("jobPost/{postId}")
+    public JobPost getJobById(@PathVariable("postId") int postId){
+        return jobService.getJobPost(postId);
     }
 
     @PostMapping("jobPost")
-    public JobPost getJobPost(@RequestBody JobPost jobPost){
-        jobService.addJob(jobPost);
-        return jobService.getJob(jobPost.getPostId());
+    public JobPost addJobPost(@RequestBody JobPost jobPost){
+        jobService.addJobPost(jobPost);
+        return jobService.getJobPost(jobPost.getPostId());
+    }
+
+    @PutMapping("jobPost")
+    public JobPost updateJobPost(@RequestBody JobPost jobPost){
+        jobService.updateJobPost(jobPost);
+        return jobService.getJobPost(jobPost.getPostId());
+    }
+
+    @DeleteMapping("jobPost/{postId}")
+    public String deleteJobPost(@PathVariable int postId){
+        jobService.deleteJobPost(postId);
+        return "Job Post Deleted";
     }
 }
