@@ -22,4 +22,13 @@ public class JobRepository {
     public List<JobPost> getAllJobs(){
         return jobs;
     }
+
+    public JobPost getJob(int postId){
+        for(JobPost jobPost : jobs){
+            if(jobPost.getPostId()==postId){
+                return jobPost;
+            }
+        }
+        return null;
+    }
 }
