@@ -42,4 +42,10 @@ public class JobController {
         jobService.deleteJobPost(postId);
         return "Job Post Deleted";
     }
+
+    @PostMapping("load")
+    public String load(){
+        jobService.load();
+        return "Data Loaded";
+    }
 }
