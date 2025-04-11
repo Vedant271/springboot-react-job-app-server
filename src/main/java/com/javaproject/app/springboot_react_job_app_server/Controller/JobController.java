@@ -21,7 +21,7 @@ public class JobController {
     }
 
     @GetMapping("jobPost/{postId}")
-    public JobPost getJobById(@PathVariable("postId") int postId){
+    public JobPost getJobPostById(@PathVariable("postId") int postId){
         return jobService.getJobPost(postId);
     }
 
@@ -47,5 +47,10 @@ public class JobController {
     public String load(){
         jobService.load();
         return "Data Loaded";
+    }
+
+    @GetMapping("jobPost/keyword/{keyword}")
+    public List<JobPost> getJobPostByKeyword(@PathVariable("keyword") String keyword){
+        return jobService.getJobPostByKeyword(keyword);
     }
 }

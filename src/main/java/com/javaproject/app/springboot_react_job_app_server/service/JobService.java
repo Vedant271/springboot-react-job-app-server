@@ -36,6 +36,8 @@ public class JobService {
         jobRepository.deleteById(postId);
     }
 
+    public List<JobPost> getJobPostByKeyword(String keyword){ return jobRepository.findByPostProfileContainingOrPostDescContaining(keyword, keyword); }
+
     public void load(){
         List<JobPost> jobPosts = new ArrayList<>(List.of(
                 new JobPost(101, "Java Developer", "Should know about Java", 1, List.of("Java", "Spring Boot")),

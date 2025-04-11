@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface JobRepository extends JpaRepository<JobPost, Integer> {
 
+    List<JobPost> findByPostProfileContainingOrPostDescContaining(String profileKeyword, String descriptionKeyword);
 }
 
 //List<JobPost> jobPosts = new ArrayList<>(List.of(
