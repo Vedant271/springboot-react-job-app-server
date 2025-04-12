@@ -15,7 +15,7 @@ public class JobController {
     @Autowired
     private JobService jobService;
 
-    @GetMapping(path = "jobPosts", produces = "application/json")
+    @GetMapping(path = "jobPosts") // , produces = "application/json" -> will return only json
     public List<JobPost> getJobPosts(){
         return jobService.getAllJobPosts();
     }
@@ -25,7 +25,7 @@ public class JobController {
         return jobService.getJobPost(postId);
     }
 
-    @PostMapping(path = "jobPost", consumes = "application/xml")
+    @PostMapping(path = "jobPost") // , consumes = "application/xml" -> will accept only xml
     public JobPost addJobPost(@RequestBody JobPost jobPost){
         jobService.addJobPost(jobPost);
         return jobService.getJobPost(jobPost.getPostId());
@@ -49,7 +49,7 @@ public class JobController {
         return "Data Loaded";
     }
 
-    @GetMapping("jobPost/keyword/{keyword}")
+    @GetMapping("jobPosts/keyword/{keyword}")
     public List<JobPost> getJobPostByKeyword(@PathVariable("keyword") String keyword){
         return jobService.getJobPostByKeyword(keyword);
     }
