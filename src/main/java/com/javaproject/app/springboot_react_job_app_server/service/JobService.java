@@ -17,6 +17,7 @@ public class JobService {
     private JobRepository jobRepository;
 
     public List<JobPost> getAllJobPosts(){
+//        int num = 10/0;
         return jobRepository.findAll();
     }
 
